@@ -1,11 +1,19 @@
 package com.example.main.core;
 
 
+<<<<<<< HEAD
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+=======
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
+
+>>>>>>> 3c4d80f (DB changes)
 public class GenericOutboxRepository {
 
     private final JdbcTemplate jdbc;
@@ -33,7 +41,11 @@ public class GenericOutboxRepository {
                      " LIMIT 1 FOR UPDATE SKIP LOCKED";
 
         List<OutboxRecord> rows = jdbc.query(sql, new Object[]{pendingStatus}, (rs, i) -> {
+<<<<<<< HEAD
             Long id = rs.getLong(idCol);
+=======
+            Object id = rs.getLong(idCol);
+>>>>>>> 3c4d80f (DB changes)
             String payload = rs.getString(payloadCol);
             return new OutboxRecord(id, payload);
         });
@@ -41,7 +53,11 @@ public class GenericOutboxRepository {
         return rows.isEmpty() ? null : rows.get(0);
     }
 
+<<<<<<< HEAD
     public void updateStatus(Long id, String status) {
+=======
+    public void updateStatus(Object id, String status) {
+>>>>>>> 3c4d80f (DB changes)
         String sql = "UPDATE " + tableName + " SET " + pendingStatusCol + " = ? WHERE " + idCol + " = ?";
         jdbc.update(sql, status, id);
     }

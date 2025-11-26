@@ -8,11 +8,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class OutboxProperties {
 
     /**
+<<<<<<< HEAD
      * The fully qualified outbox table name in the microservice DB.
      * Example: outbox_order_service
      */
     private String tableName;
 
+=======
+     * The fully qualified outbox table/collection name in the microservice DB.
+     * Example: outbox_order_service (for JDBC) or outbox_events (for MongoDB)
+     */
+    private String tableName;
+
+    /** Database type: JDBC or MONGODB */
+    private DatabaseType databaseType = DatabaseType.JDBC;
+
+>>>>>>> 3c4d80f (DB changes)
     /** polling interval in ms */
     private long pollingIntervalMs = 3000L;
 
@@ -25,10 +36,23 @@ public class OutboxProperties {
     private String username;
     private String password;
     private String queueName;
+<<<<<<< HEAD
+=======
+
+    public enum DatabaseType {
+        JDBC,
+        MONGODB
+    }
+>>>>>>> 3c4d80f (DB changes)
     
     // getters / setters
     public String getTableName() { return tableName; }
     public void setTableName(String tableName) { this.tableName = tableName; }
+<<<<<<< HEAD
+=======
+    public DatabaseType getDatabaseType() { return databaseType; }
+    public void setDatabaseType(DatabaseType databaseType) { this.databaseType = databaseType; }
+>>>>>>> 3c4d80f (DB changes)
     public long getPollingIntervalMs() { return pollingIntervalMs; }
     public void setPollingIntervalMs(long pollingIntervalMs) { this.pollingIntervalMs = pollingIntervalMs; }
     public String getPendingStatus() { return pendingStatus; }
