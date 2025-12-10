@@ -1,22 +1,28 @@
-package com.example.main.core;
+package io.github.sushmithashiva04ops.centraleventpublisher.core;
 
 
-import java.util.Map;
+import java.util.UUID;
 
 public class OutboxRecord {
-    private Long id;
+    public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+	private UUID id;
     private String payload;
-    // you can add extra columns as needed
+    
 
     public OutboxRecord() {}
 
-    public OutboxRecord(Long id, String payload) {
+    public OutboxRecord(UUID id, String payload) {
         this.id = id;
         this.payload = payload;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+  
     public String getPayload() { return payload; }
     public void setPayload(String payload) { this.payload = payload; }
 }
